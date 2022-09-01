@@ -2,17 +2,25 @@ const express = require('express')
 const morgan = require('morgan')
 const app = express()
 
-let products = [
-    {
-        id: 1,
-        name: "laptop",
-        price: 3000
-    }
-]
+// let products = [
+//     {
+//         id: 1,
+//         name: "laptop",
+//         price: 3000
+//     }
+// ]
 
+// settings
+app.set('appName', 'Express Course')
+app.set('port', 3000)
+
+
+// middlewares
 app.use(morgan('dev'))
 app.use(express.json())
 
+
+// routes
 app.get('/products', (req, res) => {
     console.log('funciona')
     res.json(products)
@@ -66,6 +74,4 @@ app.delete('/products/:id', (req, res) => {
 
 app.listen('3000')
 
-
-
-console.log(`server on port ${3000}`)
+console.log(`server ${app.get('appName')} on port ${port}`)
